@@ -14,7 +14,7 @@ fs.readFile("random.txt", "utf8", function(error,data){
     }
     console.log(data);
     dataArray = data.split(",");
-    console.log(dataArray);
+    // console.log(dataArray);
 })
 
 // Capturing the user multiple arguments
@@ -26,14 +26,16 @@ let userSearch = "";
 for (let i = 2; i < nodeArgs.length; i++){
      if ( i > 2 && i < nodeArgs.length){
          userSearch = userSearch + "+" + nodeArgs[i];
-        // console.log(UserSearch);
+        console.log(userSearch);
      }
      else {
 
       userSearch += nodeArgs[i];
+      console.log(userSearch);
+
      }
 }
-console.log(UserSearch);
+
 
 
 
