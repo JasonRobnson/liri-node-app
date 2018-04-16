@@ -52,6 +52,11 @@ switch(switchTarget){
             let queryUrl = "http://www.omdbapi.com/?t=" + movieParam[1] + "&s=&plot=short&apikey=trilogy";
             console.log(queryUrl);
             let request = require ('request');
+            request(queryUrl, function (error, response, body){
+                console.log(error);
+                console.log(body);
+                // console.log(response);
+            })
     console.log("You chose ODM!");
     break;
              case 'do-what-it-says':
