@@ -40,13 +40,13 @@ console.log(userSearch);
 
 // this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
 switch(techName){
-    case 'spotify':
+    case 'spotify-this-song':
     console.log("You chose Spoitfy!");
     break;
-             case 'twitter':
+             case 'my-tweets':
              console.log("You chose Twitter!");
              break;
-    case 'odm':
+    case 'movie-this':
     console.log("You chose ODM!");
     break;
              case 'do-what-it-says':
