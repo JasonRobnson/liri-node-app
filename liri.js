@@ -12,7 +12,6 @@ fs.readFile("random.txt", "utf8", function(error,data){
     if (error){
         return console.log(error);
     }
-    console.log(data);
     dataArray = data.split(",");
     // console.log(dataArray);
 })
@@ -26,17 +25,28 @@ let userSearch = "";
 for (let i = 2; i < nodeArgs.length; i++){
      if ( i > 2 && i < nodeArgs.length){
          userSearch = userSearch + "+" + nodeArgs[i];
-        console.log(userSearch);
      }
      else {
 
       userSearch += nodeArgs[i];
-      console.log(userSearch);
 
      }
 }
-
-
-
-
+//verified that we are capturing what the user is putting in
+console.log(userSearch);
+// this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
+switch(userSearch){
+    case 'spotify':
+    console.log("You chose Spoitfy!");
+    break;
+             case 'twitter':
+             console.log("You chose Twitter!");
+             break;
+    case 'odm':
+    console.log("You chose ODM!");
+    break;
+             case 'do what it says':
+             console.log("You chose Do what it say!");
+             break;
+}
 
