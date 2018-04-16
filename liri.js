@@ -7,6 +7,9 @@
 // Requires the node file system to 
 let fs = require("fs");
 
+// Used for Switch stament to identify Tech used
+let techName = process.argv[2];
+
 // FileSystem reading the randomtxt file, with the UTF8 encolding, with a callback function of error and data
 fs.readFile("random.txt", "utf8", function(error,data){
     if (error){
@@ -32,10 +35,11 @@ for (let i = 2; i < nodeArgs.length; i++){
 
      }
 }
-//verified that we are capturing what the user is putting in
+//verified that we are capturing all info the user is putting in
 console.log(userSearch);
+
 // this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
-switch(userSearch){
+switch(techName){
     case 'spotify':
     console.log("You chose Spoitfy!");
     break;
@@ -45,7 +49,7 @@ switch(userSearch){
     case 'odm':
     console.log("You chose ODM!");
     break;
-             case 'do what it says':
+             case 'do-what-it-says':
              console.log("You chose Do what it say!");
              break;
 }
