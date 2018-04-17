@@ -56,7 +56,15 @@ switch(switchTarget){
                 if (error) {
                     console.log(error);
                 } else {
-                    console.log(body);
+                            let movieInfo = JSON.parse(body);
+                            console.log(movieInfo.Title);
+                            console.log(movieInfo.Plot);
+                            console.log("Some noteable talent within this film are " + movieInfo.Actors);
+                            console.log("This movie was filmed in " + movieInfo.Year);
+                            console.log("The IMDB gave this movie a " + movieInfo.imdbRating + "out of 10.");
+                            console.log(movieInfo.Ratings[1]);
+                            console.log("This movie was filmed in " + movieInfo.Country);
+                            console.log("The language of this film is " + movieInfo.Language);
                        }
                 })
     console.log("You chose ODM!");
