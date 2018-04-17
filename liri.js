@@ -1,4 +1,4 @@
-// require("dotenv").config();
+require("dotenv").config();
 
 // var spotify = new Spotify(keys.spotify);
 // var client = new Twitter(keys.twitter);
@@ -53,10 +53,12 @@ switch(switchTarget){
             console.log(queryUrl);
             let request = require ('request');
             request(queryUrl, function (error, response, body){
-                console.log(error);
-                console.log(body);
-                // console.log(response);
-            })
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(body);
+                       }
+                })
     console.log("You chose ODM!");
     break;
              case 'do-what-it-says':
