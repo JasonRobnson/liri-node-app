@@ -10,7 +10,6 @@ let Spotify = require('node-spotify-api');
 let keys = require('./keys.js');
 let client = new Twitter(keys.twitter);
 let spotify = new Spotify(keys.spotify);
-console.log(spotify);
 
 // Used for Switch stament to identify Tech used
 let switchTarget = process.argv[2];
@@ -30,6 +29,7 @@ let nodeArgs = process.argv;
 
 // usersearch variable left blank so it can hold arguments after ran through the for loop
 let userSearch = "";
+let spotifySearch = process.argv[3];
 
 for (let i = 2; i < nodeArgs.length; i++) {
     if (i > 2 && i < nodeArgs.length) {
@@ -40,14 +40,18 @@ for (let i = 2; i < nodeArgs.length; i++) {
 
     }
 }
-//verified that we are capturing all info the user is putting in
-console.log(userSearch);
-
 // this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
 switch (switchTarget) {
     case 'spotify-this-song':
-        
-    
+    console.log(spotifySearch);
+    console.log(spotify);
+    spotify.search({ type: 'track', query: spotifySearch }, function(err, data) {
+        if (err) {
+          return console.log('Error occurred: ' + err);
+        }
+       
+      console.log(data.tracks); 
+      });
         console.log("You chose Spoitfy!");
         break;
     case 'my-tweets':
