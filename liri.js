@@ -1,14 +1,17 @@
 require("dotenv").config();
 
-// let spotify = new Spotify(keys.spotify);
-
-
-
 // Requires the node file system to 
 let fs = require("fs");
+// require the appropriate module for Twitter and Spotify
 let Twitter = require('twitter');
+let Spotify = require('node-spotify-api');
+
+// requires the keys.js module that holds the acces points to the .env file for the access credentials
 let keys = require('./keys.js');
 let client = new Twitter(keys.twitter);
+let spotify = new Spotify(keys.spotify);
+console.log(spotify);
+
 // Used for Switch stament to identify Tech used
 let switchTarget = process.argv[2];
 
@@ -25,6 +28,7 @@ fs.readFile("random.txt", "utf8", function (error, data) {
 // Capturing the user multiple arguments
 let nodeArgs = process.argv;
 
+// usersearch variable left blank so it can hold arguments after ran through the for loop
 let userSearch = "";
 
 for (let i = 2; i < nodeArgs.length; i++) {
@@ -42,9 +46,12 @@ console.log(userSearch);
 // this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
 switch (switchTarget) {
     case 'spotify-this-song':
+        
+    
         console.log("You chose Spoitfy!");
         break;
     case 'my-tweets':
+    // api call commands for Twitter
         var params = {
             screen_name: "@JRob_Developer"
         };
