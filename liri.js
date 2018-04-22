@@ -43,14 +43,25 @@ for (let i = 2; i < nodeArgs.length; i++) {
 // this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
 switch (switchTarget) {
     case 'spotify-this-song':
-    console.log(spotifySearch);
-    console.log(spotify);
+
     spotify.search({ type: 'track', query: spotifySearch }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
+        } 
+        for(let i = 0; i < 1; i++) {
+            // console.log(data.tracks.items[i]);
+            console.log(data.tracks.items[i].artists[0].name + " is your Artist");
+            console.log("Your entered song is " + data.tracks.items[i].name);
+            console.log("Here is the link to your song:" + data.tracks.items[i].album.artists[0].external_urls.spotify);
+            console.log(data.tracks.items[i].album.name + " is the Album that your song is from.");
+            
         }
        
-      console.log(data.tracks); 
+            //  for (let i = 0; i < data.tracks.length; i++){
+            //      console.log(data.tracks.items[i]);
+            //  }
+            //  console.log(data.tracks.items[1].album.name);
+        
       });
         console.log("You chose Spoitfy!");
         break;
