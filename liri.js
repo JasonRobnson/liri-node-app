@@ -31,19 +31,11 @@ let nodeArgs = process.argv;
 let userSearch = "";
 let spotifySearch = process.argv[3];
 
-for (let i = 2; i < nodeArgs.length; i++) {
-    if (i > 2 && i < nodeArgs.length) {
-        userSearch = userSearch + "+" + nodeArgs[i];
-    } else {
 
-        userSearch += nodeArgs[i];
+//Functions that will be used multiple times
 
-    }
-}
-// this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
-switch (switchTarget) {
-    case 'spotify-this-song':
-
+function spotifyQuery (spotifySearch){
+    
     spotify.search({ type: 'track', query: spotifySearch }, function(err, data) {
         if (err) {
           return console.log('Error occurred: ' + err);
@@ -57,7 +49,23 @@ switch (switchTarget) {
             
         }
         
-      });
+      })
+};
+
+for (let i = 2; i < nodeArgs.length; i++) {
+    if (i > 2 && i < nodeArgs.length) {
+        userSearch = userSearch + "+" + nodeArgs[i];
+    } else {
+
+        userSearch += nodeArgs[i];
+
+    }
+}
+// this begins the switch statement that choses between Spotify, Twitter, ODM, Do what it says
+switch (switchTarget) {
+    case 'spotify-this-song':
+            spotifyQuery(spotifySearch);
+ 
         console.log("You chose Spoitfy!");
         break;
     case 'my-tweets':
@@ -130,8 +138,12 @@ switch (switchTarget) {
                  if (error){
                      return console.log(error);
                  }
-                 console.log(data);
+                 console.log("This is from the randomtxt file." + data);
+                 let doText = data.split(",");
+                 console.log(doText)
              })
              console.log("You chose Do what it say!");
              break;
 }
+
+
