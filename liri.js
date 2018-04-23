@@ -45,7 +45,7 @@ function spotifyQuery (spotifySearch){
             console.log(data.tracks.items[i].artists[0].name + " is your Artist");
             console.log("Your entered song is " + data.tracks.items[i].name);
             console.log("Here is the link to your song:" + data.tracks.items[i].album.artists[0].external_urls.spotify);
-            console.log(data.tracks.items[i].album.name + " is the Album that your song is from.");
+            console.log("'"+data.tracks.items[i].album.name+"'" + " is the Album that your song is from.");
             
         }
         
@@ -64,7 +64,7 @@ function odmQuery (movieParam){
            let movieInfo = JSON.parse(body);
            console.log(movieInfo.Title);
            console.log(movieInfo.Plot);
-           console.log("Some noteable talent within this film are " + movieInfo.Actors);
+           console.log("Noteable talent within this film are " + movieInfo.Actors);
            console.log("This movie was filmed in " + movieInfo.Year);
            console.log("The IMDB gave this movie a " + movieInfo.imdbRating + "out of 10.");
            console.log(movieInfo.Ratings[1].Source  + " " + movieInfo.Ratings[1].Value );
@@ -93,14 +93,15 @@ switch (switchTarget) {
     case 'my-tweets':
     // api call commands for Twitter
         var params = {
-            screen_name: "@JRob_Developer"
+            screen_name: "@realDonaldTrump"
         };
         client.get('statuses/user_timeline', params, function (error, tweets, response) {
                     if (!error) {
 
-                for (let i = 0; i < 10; i++) {
-                        console.log(tweets[i].text);
-                        console.log(tweets[i].created_at);
+                for (let i = 0; i < 20; i++) {
+                        
+                        console.log("Donald Trump tweeted: " + tweets[i].text + "\non " + tweets[i].created_at + "\n");
+                        
                 }
                         }
         });
