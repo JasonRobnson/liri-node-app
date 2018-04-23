@@ -126,6 +126,12 @@ switch (switchTarget) {
     console.log("You chose ODM!");
     break;
              case 'do-what-it-says':
+             fs.readFile("random.txt", "utf8", function(error, data){
+                 if (error){
+                     return console.log(error);
+                 }
+                 console.log(data);
+             })
              console.log("You chose Do what it say!");
              break;
 }
