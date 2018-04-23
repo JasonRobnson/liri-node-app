@@ -13,7 +13,6 @@ Node Package Modules.
 - [Tech Used](#tech-used)
 - [Installation](#installation)
 - [API Reference](#api-reference)
-  - [Endpoint](#endpoint)
 - [Testing](#testing)
 - [License](#license)
 - [Next Steps](#next-steps)
