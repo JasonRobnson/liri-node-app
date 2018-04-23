@@ -52,6 +52,28 @@ function spotifyQuery (spotifySearch){
       })
 };
 
+function odmQuery (movieParam){
+
+
+     let queryUrl = "http://www.omdbapi.com/?t=" + movieParam[1] + "&s=&plot=short&apikey=trilogy";
+     let request = require('request');
+     request(queryUrl, function(error, response, body){
+         if(error) {
+             console.log(error);
+         } else {
+           let movieInfo = JSON.parse(body);
+           console.log(movieInfo.Title);
+           console.log(movieInfo.Plot);
+           console.log("Some noteable talent within this film are " + movieInfo.Actors);
+           console.log("This movie was filmed in " + movieInfo.Year);
+           console.log("The IMDB gave this movie a " + movieInfo.imdbRating + "out of 10.");
+           console.log(movieInfo.Ratings[1].Source  + " " + movieInfo.Ratings[1].Value );
+           console.log("This movie was filmed in " + movieInfo.Country);
+           console.log("The language of this film is " + movieInfo.Language);
+         }
+    })
+  };
+
 for (let i = 2; i < nodeArgs.length; i++) {
     if (i > 2 && i < nodeArgs.length) {
         userSearch = userSearch + "+" + nodeArgs[i];
@@ -84,65 +106,29 @@ switch (switchTarget) {
         });
              
             
-             console.log("You chose Twitter!");
              break;
     case 'movie-this':
-                 console.log ( "This is user Search: " + userSearch);
                  let movieParam = userSearch.split("+");
-                 console.log("This is a MovieParam: " + movieParam[1]);
                if (movieParam[1] === undefined){
-                  console.log("This is where Mister Nobody lives!")
-                  let queryUrl = "http://www.omdbapi.com/?t=" + "Mr.Nobody" + "&s=&plot=short&apikey=trilogy";
-                  let request = require('request');
-                  request(queryUrl, function(error, response, body){
-                      if(error) {
-                          console.log(error);
-                      } else {
-                        let movieInfo = JSON.parse(body);
-                        console.log(movieInfo.Title);
-                        console.log(movieInfo.Plot);
-                        console.log("Some noteable talent within this film are " + movieInfo.Actors);
-                        console.log("This movie was filmed in " + movieInfo.Year);
-                        console.log("The IMDB gave this movie a " + movieInfo.imdbRating + "out of 10.");
-                        console.log(movieInfo.Ratings[1].Source  + " " + movieInfo.Ratings[1].Value );
-                        console.log("This movie was filmed in " + movieInfo.Country);
-                        console.log("The language of this film is " + movieInfo.Language);
-                      }
-                  })
+                  movieParam.push("Mr.Nobody")
+                    odmQuery(movieParam);
                   break;
                } 
-           
-          
-            let queryUrl = "http://www.omdbapi.com/?t=" + movieParam[1] + "&s=&plot=short&apikey=trilogy";
-            console.log(queryUrl);
-            let request = require ('request');
-            request(queryUrl, function (error, response, body){
-                if (error) {
-                    console.log(error);
-                } else {
-                            let movieInfo = JSON.parse(body);
-                            console.log(movieInfo.Title);
-                            console.log(movieInfo.Plot);
-                            console.log("Some noteable talent within this film are " + movieInfo.Actors);
-                            console.log("This movie was filmed in " + movieInfo.Year);
-                            console.log("The IMDB gave this movie a " + movieInfo.imdbRating + "out of 10.");
-                            console.log(movieInfo.Ratings[1].Source  + " " + movieInfo.Ratings[1].Value );
-                            console.log("This movie was filmed in " + movieInfo.Country);
-                            console.log("The language of this film is " + movieInfo.Language);
-                       }
-                })
-    console.log("You chose ODM!");
-    break;
+
+               let fullMovieParam = userSearch.split("+");
+            odmQuery(fullMovieParam);
+            break;
+
              case 'do-what-it-says':
              fs.readFile("random.txt", "utf8", function(error, data){
                  if (error){
                      return console.log(error);
                  }
-                 console.log("This is from the randomtxt file." + data);
                  let doText = data.split(",");
-                 console.log(doText)
+                 let doWhatSong = doText[1];
+                 spotifyQuery(doWhatSong);
+
              })
-             console.log("You chose Do what it say!");
              break;
 }
 
