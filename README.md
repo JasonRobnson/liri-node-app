@@ -54,7 +54,7 @@ There are 4 main syntaxes used:
     Random return = ' do-what-it-says '
 
 You can run test by:
-' node liri.js "Any of the 4 syntaxes" 
+' node liri.js "**Any of the 4 syntaxes**" 
 
 ## License
 
