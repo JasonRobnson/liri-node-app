@@ -34,10 +34,10 @@ Node Package Modules.
 
 Steps:
 
-npm i twitter
-npm i node-spotify-api
-npm i request
-npm i fs
+npm i twitter ||
+npm i node-spotify-api ||
+npm i request ||
+npm i fs ||
 
 ## API Reference
 [Twitter](https://developer.twitter.com/en/docs/api-reference-index) 
