@@ -44,11 +44,6 @@ npm i fs
 [Spotify](https://developer.spotify.com/web-api/tutorial/)
 [ODM](http://www.omdbapi.com/)
 
-### Endpoint
-
-**Request:**
-
-**Response:**
 
 ## Testing
 There are 4 main syntaxes used:
