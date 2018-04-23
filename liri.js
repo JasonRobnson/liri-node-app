@@ -56,11 +56,6 @@ switch (switchTarget) {
             console.log(data.tracks.items[i].album.name + " is the Album that your song is from.");
             
         }
-       
-            //  for (let i = 0; i < data.tracks.length; i++){
-            //      console.log(data.tracks.items[i]);
-            //  }
-            //  console.log(data.tracks.items[1].album.name);
         
       });
         console.log("You chose Spoitfy!");
@@ -84,8 +79,32 @@ switch (switchTarget) {
              console.log("You chose Twitter!");
              break;
     case 'movie-this':
-            let movieParam = userSearch.split("+");
-            console.log(movieParam[1]);
+                 console.log ( "This is user Search: " + userSearch);
+                 let movieParam = userSearch.split("+");
+                 console.log("This is a MovieParam: " + movieParam[1]);
+               if (movieParam[1] === undefined){
+                  console.log("This is where Mister Nobody lives!")
+                  let queryUrl = "http://www.omdbapi.com/?t=" + "Mr.Nobody" + "&s=&plot=short&apikey=trilogy";
+                  let request = require('request');
+                  request(queryUrl, function(error, response, body){
+                      if(error) {
+                          console.log(error);
+                      } else {
+                        let movieInfo = JSON.parse(body);
+                        console.log(movieInfo.Title);
+                        console.log(movieInfo.Plot);
+                        console.log("Some noteable talent within this film are " + movieInfo.Actors);
+                        console.log("This movie was filmed in " + movieInfo.Year);
+                        console.log("The IMDB gave this movie a " + movieInfo.imdbRating + "out of 10.");
+                        console.log(movieInfo.Ratings[1].Source  + " " + movieInfo.Ratings[1].Value );
+                        console.log("This movie was filmed in " + movieInfo.Country);
+                        console.log("The language of this film is " + movieInfo.Language);
+                      }
+                  })
+                  break;
+               } 
+           
+          
             let queryUrl = "http://www.omdbapi.com/?t=" + movieParam[1] + "&s=&plot=short&apikey=trilogy";
             console.log(queryUrl);
             let request = require ('request');
@@ -99,7 +118,7 @@ switch (switchTarget) {
                             console.log("Some noteable talent within this film are " + movieInfo.Actors);
                             console.log("This movie was filmed in " + movieInfo.Year);
                             console.log("The IMDB gave this movie a " + movieInfo.imdbRating + "out of 10.");
-                            console.log(movieInfo.Ratings[1]);
+                            console.log(movieInfo.Ratings[1].Source  + " " + movieInfo.Ratings[1].Value );
                             console.log("This movie was filmed in " + movieInfo.Country);
                             console.log("The language of this film is " + movieInfo.Language);
                        }
