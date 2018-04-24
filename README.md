@@ -44,16 +44,13 @@ npm i fs ||
 [ODM](http://www.omdbapi.com/)
 
 
-## Testing
+## How to use:
 There are 4 main syntaxes used:
 
-    Twitter = ' my-tweets '
-    Spotify = ' spotify-this-song '
-    Movie search = ' movie-this '
-    Random return = ' do-what-it-says '
-
-You can run test by:
-' node liri.js "**Any of the 4 syntaxes**" 
+    Twitter = 'node liri.js my-tweets '
+    Spotify = 'node liri.js spotify-this-song [song name]'
+    Movie search = 'node liri.js movie-this [movie title] '
+    Random return = 'node liri.js do-what-it-says '
 
 ## License
 
@@ -66,3 +63,5 @@ Continue LIRI development to increase functionability.
 Twitter: Development to allow swithicng of user Tweets.
 Spotify: Intake of Artist, Albums, and narrow search return with songs. 
 ODM: Increase functionality to take in multiple parameters, as well as searching by Actor/Actress and Genre.
+
+Also, I'd like to write have this program write to a log based on previous user searches. 
